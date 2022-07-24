@@ -1,80 +1,146 @@
-// C++ program for the above approach
-#include <bits/stdc++.h>
+#include<iostream>
+#include<conio.h>
+
 using namespace std;
 
-// Function to convert mobile numeric
-// keypad sequence into its equivalent
-// string
-void printSentence(string str)
-{
-	// Store the mobile keypad mappings
-	char nums[][5]
-		= { "", "", "ABC", "DEF", "GHI",
-			"JKL", "MNO", "PQRS", "TUV",
-			"WXYZ" };
-
-	// Traverse the string str
-	int i = 0;
-	while (str[i] != '\0') {
-
-		// If the current character is
-		// '.', then continue to the
-		// next iteration
-		if (str[i] == '.') {
-			i++;
-			continue;
-		}
-
-		// Stores the number of
-		// continuous clicks
-		int count = 0;
-
-		// Iterate a loop to find the
-		// count of same characters
-		while (str[i + 1]
-			&& str[i] == str[i + 1]) {
-
-			// 2, 3, 4, 5, 6 and 8 keys will
-			// have maximum of 3 letters
-			if (count == 2
-				&& ((str[i] >= '2'
-					&& str[i] <= '6')
-					|| (str[i] == '8')))
-				break;
-
-			// 7 and 9 keys will have
-			// maximum of 4 keys
-			else if (count == 3
-					&& (str[i] == '7'
-						|| str[i] == '9'))
-				break;
+void to_check(int l, string n){
+	int count = 1, i, j, output1=0;
+	char output[3];
+	for(int i=0;i<l;i++){
+		int z = (int)n[i];
+		if(n[i]==n[i+1]){
 			count++;
-			i++;
-
-			// Handle the end condition
-			if (str[i] == '\0')
-				break;
+		}else{
+				switch(z){
+					case 50:
+						if(count==1){
+							output[output1] = 97;
+						}else if(count==2){
+							output[output1] = 98;
+						}else if(count==3){
+							output[output1] = 99;
+						}else if(count==4){
+							output[output1] = 50;
+						}
+						output1++;
+						break;
+					case 51:
+						if(count==1){
+							output[output1] = 100;
+						}else if(count==2){
+							output[output1] = 101;
+						}else if(count==3){
+							output[output1] = 102;
+						}else if(count==4){
+							output[output1] = 51;
+						}
+						output1++;
+						break;
+						case 52:
+						if(count==1){
+							output[output1] = 103;
+						}else if(count==2){
+							output[output1] = 104;
+						}else if(count==3){
+							output[output1] = 105;
+						}else if(count==4){
+							output[output1] = 52;
+						}
+						output1++;
+						break;
+						case 53:
+						if(count==1){
+							output[output1] = 106;
+						}else if(count==2){
+							output[output1] = 107;
+						}else if(count==3){
+							output[output1] = 108;
+						}else if(count==4){
+							output[output1] = 53;
+						}
+						output1++;
+						break;
+						case 54:
+						if(count==1){
+							output[output1] = 109;
+						}else if(count==2){
+							output[output1] = 110;
+						}else if(count==3){
+							output[output1] = 111;
+						}else if(count==4){
+							output[output1] = 54;
+						}
+						output1++;
+						break;
+						case 55:
+						if(count==1){
+							output[output1] = 112;
+						}else if(count==2){
+							output[output1] = 113;
+						}else if(count==3){
+							output[output1] = 114;
+						}else if(count==4){
+							output[output1] = 115;
+						}else if(count==5){
+							output[output1] = 55;
+						}
+						output1++;
+						break;
+						case 56:
+						if(count==1){
+							output[output1] = 116;
+						}else if(count==2){
+							output[output1] = 117;
+						}else if(count==3){
+							output[output1] = 118;
+						}else if(count==4){
+							output[output1] = 56;
+						}
+						output1++;
+						break;
+						case 57:
+						if(count==1){
+							output[output1] = 119;
+						}else if(count==2){
+							output[output1] = 120;
+						}else if(count==3){
+							output[output1] = 121;
+						}else if(count==4){
+							output[output1] = 122;
+						}else if(count==5){
+							output[output1] = 57;
+						}
+						output1++;
+						break;
+						case 48:
+							output[output1] = 48;
+								output1++;
+								break;
+						case 49:
+							if(count==1)
+							output[output1] = 49;
+								output1++;
+								break;
+			}
+			count = 1;
+			
 		}
-
-		// Check if the current pressed
-		// key is 7 or 9
-		if (str[i] == '7' || str[i] == '9') {
-			cout << nums[str[i] - 48][count % 4];
-		}
-
-		// Else, the key pressed is
-		// either 2, 3, 4, 5, 6 or 8
-		else {
-			cout << nums[str[i] - 48][count % 3];
-		}
-		i++;
+	}
+	for(int i=0;i<4;i++){
+		cout<<output[i];
 	}
 }
 
-// Driver Code
-int main()
-{
-	string str = "234";
-	printSentence(str);
+int main(){
+
+	string number;
+	char output[4];
+	int count= 0, length;
+	cout<<"enter a number you of which you want alphabet: ";
+	cin>>number;
+	length = number.length();
+	to_check(length,number);
+	
+	
 	return 0;
 }
